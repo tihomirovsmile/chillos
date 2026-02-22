@@ -10,7 +10,6 @@
 
   <!-- BOOT / BIOS -->
   <div id="bootRoot" aria-label="Boot">
-    <!-- BIOS POST (console-like) -->
     <div id="biosPost" class="biosPost">
       <div class="biosPostHeader">
         <div id="biosPostTitle" class="biosPostTitle">ChillOS BIOS</div>
@@ -19,7 +18,6 @@
       <pre id="biosPostLog" class="biosPostLog"></pre>
     </div>
 
-    <!-- BIOS menu -->
     <div id="biosMenu" class="biosMenu" aria-label="BIOS Setup">
       <div class="biosMenuTop">
         <div class="biosMenuTitle" id="biosMenuTitle">BIOS Setup</div>
@@ -41,14 +39,13 @@
           </div>
 
           <div class="biosNote">
-            BIOS сохраняет overrides в localStorage (браузер не может писать в файлы проекта напрямую).
-            Для постоянных изменений — обновляй JSON в <code>chillos/settings</code>.
+            BIOS сохраняет overrides в localStorage. Для постоянных изменений — редактируй JSON в <code>chillos/settings</code>.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Stage 1: black + logo -->
+    <!-- Stage: black + logo -->
     <div id="stageLogo" class="stageLogo">
       <div class="stageLogoCenter">
         <img id="bootLogoImg" alt="" />
@@ -56,7 +53,7 @@
       </div>
     </div>
 
-    <!-- Stage 2: blue loading -->
+    <!-- Stage: blue loading -->
     <div id="stageBlue" class="stageBlue">
       <div class="stageBlueCenter">
         <div class="stageBlueTitle" id="stageBlueTitle">Загрузка</div>
@@ -81,7 +78,7 @@
 
       <div class="bsodBtns">
         <button class="btn" id="bsodCopy">Скопировать</button>
-        <button class="btn primary" id="bsodReload">Перезапустить</button>
+        <button class="btn primary" id="bsodReboot">Перезагрузить систему</button>
       </div>
     </div>
   </div>
@@ -102,6 +99,10 @@
     <!-- Start menu -->
     <div id="startMenu" class="startMenu" aria-label="Start menu">
       <div class="startTop">
+        <div class="startHeader">
+          <div class="startTitle">Пуск</div>
+          <div class="startBadge" id="startBadge">Alpha</div>
+        </div>
         <input id="startSearch" class="startSearch" placeholder="Поиск…" />
       </div>
       <div id="startGrid" class="startGrid"></div>
@@ -112,19 +113,19 @@
 
     <!-- Taskbar -->
     <div class="taskbar" id="taskbar" aria-label="Taskbar">
-      <div class="taskbarLeft"></div>
+      <div class="taskbarInner">
+        <div class="taskCenterWrap" id="taskCenterWrap">
+          <button class="startBtn" id="startBtn" aria-label="Start">
+            <img id="startIconImg" alt="" />
+          </button>
+          <div id="taskApps" class="taskApps" aria-label="Running apps"></div>
+        </div>
 
-      <div class="taskbarCenter">
-        <button class="taskBtn startBtn" id="startBtn" aria-label="Start">
-          <img id="startIconImg" alt="" />
-        </button>
-        <div id="taskApps" class="taskApps" aria-label="Running apps"></div>
-      </div>
-
-      <div class="taskbarRight">
-        <button class="taskBtn sysBtn" id="fsBtn" title="Полноэкранный режим" aria-label="Fullscreen">⛶</button>
-        <button class="taskBtn sysBtn" id="powerBtn" title="Питание" aria-label="Power">⏻</button>
-        <div class="clock" id="clock">--:--</div>
+        <div class="taskRight">
+          <button class="sysBtn" id="fsBtn" title="Полноэкранный режим" aria-label="Fullscreen">⛶</button>
+          <button class="sysBtn" id="powerBtn" title="Питание" aria-label="Power">⏻</button>
+          <div class="clock" id="clock">--:--</div>
+        </div>
       </div>
     </div>
 
@@ -135,7 +136,7 @@
     <div id="toast" class="toast" aria-live="polite"></div>
   </div>
 
-  <!-- User CSS overrides (from BIOS/localStorage) injected here -->
+  <!-- User CSS overrides (from BIOS/localStorage) -->
   <style id="userCss"></style>
 
   <script defer src="./app.js"></script>
